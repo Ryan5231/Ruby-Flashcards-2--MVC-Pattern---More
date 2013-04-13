@@ -22,6 +22,10 @@ class UserSessionModel
     current_card.answer == input
   end
 
+  def keep_track_failures
+
+  end
+
   
 
 end
