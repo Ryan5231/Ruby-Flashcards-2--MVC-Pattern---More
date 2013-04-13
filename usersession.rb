@@ -1,7 +1,11 @@
 require_relative 'reader'
 
 class UserSessionModel
-  attr_reader :flashcard_database
+  attr_reader :flashcard_database, :repeat_flashcard_database
+  def initialize
+    @repeat_flashcard_database = []
+    @done_database = []
+  end
 
   def load(filename)
     @flashcard_database = Reader.read(filename)
@@ -12,8 +16,7 @@ class UserSessionModel
   end
 
   def produce_repeat_list
-    @repeat_flashcard_database = []
-    return @repeat_flashcard_database
+    @repeat_flashcard_database = @done_database.select { |card| card.incorrect_attempts > 0 }
   end
 
   def validate(input, current_card)
@@ -32,9 +35,13 @@ class UserSessionModel
   end
 
   def get_next_question
-    @done_database = []
-    @done_database << @flashcard_database.pop
-    @done_database.last
+    unless flashcard_database.empty?
+      @done_database << @flashcard_database.pop
+      @done_database.last
+    else
+      @done_database << @repeat_flashcard_database.pop
+      @done_database.last
+    end
   end
 
   

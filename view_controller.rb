@@ -26,15 +26,13 @@ class FlashCardController
     @current_card.question
   end
 
-  def game_finished?
+  def first_deck_finished?
     @user_session_model.flashcard_database.empty? ? true : false
   end
 
-  def has_initial_game_finished
-
-    @user_session_model.produce_repeat_list
+  def repeat_deck_finished?
+    @user_session_model.repeat_flashcard_database.empty? ? true : false
   end
-
 end
 
 
@@ -50,9 +48,13 @@ class FlashCardView
   end
 
   def game_play
-    until @controller.game_finished?
+    until @controller.first_deck_finished?
       questions_answers
     end
+    until @controller.repeat_deck_finished?
+      questions_answers
+    end
+    puts "finished! fuck you"
   end
 
   def welcome
@@ -70,9 +72,9 @@ class FlashCardView
   end
 
   def questions_answers
-    until @controller.game_finished?
+    until @controller.first_deck_finished? && @controller.repeat_deck_finished?
       puts @controller.get_next_question
-      puts "> "
+      print "> "
       input = gets.chomp
       puts @controller.respond_to_q_a(input)
     end
