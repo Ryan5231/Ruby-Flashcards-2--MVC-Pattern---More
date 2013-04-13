@@ -22,20 +22,16 @@ class FlashCardController
   end
 
   def get_next_question 
-    @current_card = @user_session_model.get_next_question # hack
+    @current_card = @user_session_model.get_next_question
     @current_card.question
   end
 
   def game_finished?
-    return false
-    # return true if it is done
-    # otherwise false
-
+    @user_session_model.flashcard_database.empty? ? true : false
   end
 
   def has_initial_game_finished
     @user_session_model.produce_repeat_list
-
   end
 
 end
