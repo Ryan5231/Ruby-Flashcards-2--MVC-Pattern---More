@@ -12,6 +12,7 @@ class UserSessionModel
   end
 
   def produce_repeat_list
+    @repeat_flashcard_database = []
     return @repeat_flashcard_database
   end
 
@@ -31,7 +32,9 @@ class UserSessionModel
   end
 
   def get_next_question
-    @flashcard_database.pop
+    @done_database = []
+    @done_database << @flashcard_database.pop
+    @done_database.last
   end
 
   
