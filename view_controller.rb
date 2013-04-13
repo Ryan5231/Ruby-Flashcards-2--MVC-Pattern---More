@@ -25,10 +25,6 @@ class FlashCardController
     
   end
 
-  # def quit
-    
-  # end
-
 end
 
 
