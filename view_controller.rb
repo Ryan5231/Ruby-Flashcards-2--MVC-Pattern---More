@@ -55,7 +55,7 @@ class FlashCardView
     until @controller.repeat_deck_finished?
       questions_answers
     end
-    puts "finished! fuck you"
+    puts "finished! Good work!"
   end
 
   def welcome
@@ -66,18 +66,20 @@ class FlashCardView
 
   def choose_decks_prompt
     puts "which card game do you want play?"
-    #puts # display all the txt files that are available
     print "> "
     input = gets.chomp
     puts @controller.respond_to_decks(input.to_i)
   end
 
   def questions_answers
+    system  "clear"
     until @controller.first_deck_finished? && @controller.repeat_deck_finished?
       puts @controller.get_next_question
       print "> "
       input = gets.chomp
       puts @controller.respond_to_q_a(input)
+      sleep(0.5)
+      system "clear"
     end
   end
 end

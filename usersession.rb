@@ -8,15 +8,11 @@ class UserSessionModel
   end
 
   def load(filename)
-    @flashcard_database = Reader.read(filename)
-  end
-
-  def shuffle
-    @flashcard_database.shuffle
+    @flashcard_database = Reader.read(filename).shuffle
   end
 
   def produce_repeat_list
-    @repeat_flashcard_database = @done_database.select { |card| card.incorrect_attempts > 0 }
+    @repeat_flashcard_database = @done_database.select { |card| card.incorrect_attempts > 0 }.shuffle
   end
 
   def validate(input, current_card)
