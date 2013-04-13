@@ -1,4 +1,5 @@
 require_relative 'Reader'
+require_relative ''
 
 class UserSessionModel
   def initialize(filename)
@@ -10,23 +11,11 @@ class UserSessionModel
   end
 
   def add_to_failed
-# sida zhang
-"
-....................../´¯/) 
-....................,/¯../ 
-.................../..../ 
-............./´¯/'...'/´¯¯`·¸ 
-........../'/.../..../......./¨¯\ 
-........('(...´...´.... ¯~/'...') 
-.........\.................'...../ 
-..........''...\.......... _.·´ 
-............\..............( 
-..............\.............\...
-"
+
   end
 
   def validate
-# mother fucker
+
   end
 end
 
