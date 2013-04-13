@@ -20,8 +20,12 @@ class FlashCardController
     # return success or failure message
   end
 
+  def pick_a_question 
+    @user_session_model.flashcard_database[0].question
+  end
+
   def looping
-    respond_to_q_a
+    # respond_to_q_a
     
   end
 
@@ -40,12 +44,14 @@ class FlashCardView
   end
 
   def game_play
-    #somehow loop this until base case is satisified
+    
     questions_answers
   end
 
   def welcome
+    puts "-------------------------------"
     puts "Welcome to the Flash Card Game"    
+    puts "-------------------------------"
   end
 
   def choose_decks_prompt
@@ -54,11 +60,11 @@ class FlashCardView
     print "> "
     input = gets.chomp
     puts @controller.respond_to_decks(input)
-    puts "which one is loaded"
   end
 
   def questions_answers
-    puts #question
+    puts "\e[H\e[2J"
+    puts controller.pick_a_question
     input = gets.chomp
     puts @controller.respond_to_q_a(input)
     
@@ -69,6 +75,4 @@ end
 user_session_model = UserSessionModel.new
 flash_controller = FlashCardController.new(user_session_model)
 new_game = FlashCardView.new(flash_controller)
-
-
 new_game.start
