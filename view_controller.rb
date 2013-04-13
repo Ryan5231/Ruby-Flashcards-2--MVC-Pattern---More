@@ -67,7 +67,13 @@ class FlashCardView
     puts "\e[H\e[2J"
     puts @controller.get_a_question
     input = gets.chomp
-    puts @controller.respond_to_q_a(input)
+    if @controller.respond_to_q_a(input)
+      puts "Correct" 
+      return true
+    else
+      puts "Wrong! Try again!"
+      return false
+    end
   end
 end
 
