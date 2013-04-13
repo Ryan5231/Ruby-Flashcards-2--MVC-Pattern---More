@@ -8,15 +8,17 @@ class FlashCardController
   end
 
   def respond_to_decks(choice)
-    @user_session_model.load(@decks[choice])
-    @decks[choice]
+    filename = @decks[choice]
+    @user_session_model.load(filename)
+    filename
   end
 
   def respond_to_q_a(input)
-    @user_session_model.validate(input, @current_card)
-    # calls validate(input)
-    # traps user within here if the user keeps getting this wrong
-    # return success or failure message
+    if @user_session_model.validate(input, @current_card)
+      return ture
+    else
+      return false
+    end
   end
 
   def get_a_question 
