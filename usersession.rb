@@ -1,7 +1,5 @@
 require_relative 'reader'
 
-
-
 class UserSessionModel
   attr_reader :flashcard_database
 
@@ -13,7 +11,9 @@ class UserSessionModel
     @flashcard_database.shuffle
   end
 
-  def add_to_failed
+  def produce_repeat_list
+
+    return @repeat_flashcard_database
 
   end
 
@@ -22,8 +22,12 @@ class UserSessionModel
     current_card.answer == input
   end
 
-  def keep_track_failures
+  def keep_track_attempts
 
+  end
+
+  def get_next_question
+    @flashcard_database.pop
   end
 
   

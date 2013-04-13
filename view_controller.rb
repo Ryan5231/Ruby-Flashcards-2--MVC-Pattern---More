@@ -21,8 +21,8 @@ class FlashCardController
     end
   end
 
-  def get_a_question 
-    @current_card = @user_session_model.flashcard_database[0] # hack
+  def get_next_question 
+    @current_card = @user_session_model.get_next_question # hack
     @current_card.question
   end
 
@@ -30,6 +30,11 @@ class FlashCardController
     return false
     # return true if it is done
     # otherwise false
+
+  end
+
+  def has_initial_game_finished
+    @user_session_model.produce_repeat_list
 
   end
 
@@ -68,7 +73,7 @@ class FlashCardView
   end
 
   def questions_answers
-    puts @controller.get_a_question
+    puts @controller.get_next_question
     input = gets.chomp
     if @controller.respond_to_q_a(input)
       puts "Correct" 
