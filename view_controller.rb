@@ -70,14 +70,11 @@ class FlashCardView
   end
 
   def questions_answers
-    puts @controller.get_next_question
-    input = gets.chomp
-    if @controller.respond_to_q_a(input)
-      puts "Correct" 
-      return true
-    else
-      puts "Wrong! Try again!"
-      return false
+    until @controller.game_finished?
+      puts @controller.get_next_question
+      puts "> "
+      input = gets.chomp
+      puts @controller.respond_to_q_a(input)
     end
   end
 end
