@@ -58,7 +58,7 @@ class FlashCardView
     #puts # display all the txt files that are available
     print "> "
     input = gets.chomp
-    puts @controller.respond_to_decks(input)
+    puts @controller.respond_to_decks(input.to_i)
   end
 
   def questions_answers
