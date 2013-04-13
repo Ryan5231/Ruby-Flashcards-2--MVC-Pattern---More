@@ -1,8 +1,11 @@
-require_relative 'Reader'
-require_relative ''
+require_relative 'reader'
+
+
 
 class UserSessionModel
-  def initialize(filename)
+  attr_reader :flashcard_database
+
+  def load(filename)
     @flashcard_database = Reader.read(filename)
   end
 
@@ -15,9 +18,11 @@ class UserSessionModel
   end
 
   def validate
+    #this returns a boolean
 
   end
+
 end
 
-session_instance = UserSessionModel.new("flashcard_sample.txt")
-p session_instance
+# session_instance = UserSessionModel.new("flashcard_sample.txt")
+# p session_instance
