@@ -15,9 +15,9 @@ class FlashCardController
 
   def respond_to_q_a(input)
     if @user_session_model.validate(input, @current_card)
-      return true
+      return "AWESOME! Keep it up!"
     else
-      return false
+      return "BOOOOO! Google it next time."
     end
   end
 
