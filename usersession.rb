@@ -10,7 +10,7 @@ class UserSessionModel
   end
 
   def add_to_failed
-
+# sida zhang
   end
 
   def validate
