@@ -4,13 +4,12 @@ require_relative 'usersession'
 class FlashCardController
   def initialize(user_session_model)
     @user_session_model = user_session_model
+    @decks = { 1 => 'flashcard_sample.txt', 2 => 'flashcard_sample2.txt', 3 => 'flashcard_sample3.txt'}
   end
 
   def respond_to_decks(choice)
-    # case choice
-    # when 1
-      @user_session_model.load('flashcard_sample.txt')
-    # returns string of deck loaded
+    @user_session_model.load(@decks[choice])
+    @decks[choice]
   end
 
   def respond_to_q_a(input)
