@@ -31,6 +31,7 @@ class FlashCardController
   end
 
   def has_initial_game_finished
+
     @user_session_model.produce_repeat_list
   end
 

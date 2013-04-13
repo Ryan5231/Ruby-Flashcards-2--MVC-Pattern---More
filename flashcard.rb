@@ -1,5 +1,5 @@
 class Flashcard
-  attr_accessor :question, :answer, :attempts
+  attr_accessor :question, :answer, :attempts, :correct_attempts, :incorrect_attempts
   
   def initialize(card, correct_attempts = 0, incorrect_attempts = 0)
     @question, @answer = card

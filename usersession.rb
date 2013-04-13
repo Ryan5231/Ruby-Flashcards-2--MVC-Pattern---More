@@ -12,18 +12,22 @@ class UserSessionModel
   end
 
   def produce_repeat_list
-
     return @repeat_flashcard_database
-
   end
 
   def validate(input, current_card)
-    #this returns a boolean
-    current_card.answer == input
+    outcome = current_card.answer == input
+    keep_track_attempts(outcome, current_card)
+    outcome
   end
 
-  def keep_track_attempts
-
+  def keep_track_attempts(outcome, current_card)
+    if outcome
+      current_card.correct_attempts += 1
+    else
+      current_card.incorrect_attempts += 1
+      p current_card.incorrect_attempts
+    end
   end
 
   def get_next_question
