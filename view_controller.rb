@@ -6,11 +6,10 @@ class FlashCardController
     @user_session_model = user_session_model
   end
 
-
-
-  def respond_to_decks(input)
-    # choose one of the txt files that are available
-    # @user_session_model.load(choice)
+  def respond_to_decks(choice)
+    # case choice
+    # when 1
+      @user_session_model.load('flashcard_sample.txt')
     # returns string of deck loaded
   end
 
