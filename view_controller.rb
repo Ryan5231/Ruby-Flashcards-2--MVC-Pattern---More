@@ -20,7 +20,7 @@ class FlashCardController
     # return success or failure message
   end
 
-  def pick_a_question 
+  def get_a_question 
     @user_session_model.flashcard_database[0].question
   end
 
@@ -44,7 +44,6 @@ class FlashCardView
   end
 
   def game_play
-    
     questions_answers
   end
 
@@ -64,7 +63,7 @@ class FlashCardView
 
   def questions_answers
     puts "\e[H\e[2J"
-    puts controller.pick_a_question
+    puts @controller.get_a_question
     input = gets.chomp
     puts @controller.respond_to_q_a(input)
     
