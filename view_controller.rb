@@ -17,6 +17,7 @@ class FlashCardController
     if @user_session_model.validate(input, @current_card)
       return "AWESOME! Keep it up!"
     else
+      @user_session_model.repeat_flashcard_database << @current_card 
       return "BOOOOO! Google it next time."
     end
   end
