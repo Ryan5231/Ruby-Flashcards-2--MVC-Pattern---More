@@ -26,9 +26,11 @@ class FlashCardController
     @current_card.question
   end
 
-  def looping
-    # respond_to_q_a
-    
+  def game_finished?
+    return false
+    # return true if it is done
+    # otherwise false
+
   end
 
 end
@@ -46,7 +48,9 @@ class FlashCardView
   end
 
   def game_play
-    questions_answers
+    until @controller.game_finished?
+      questions_answers
+    end
   end
 
   def welcome
@@ -64,7 +68,6 @@ class FlashCardView
   end
 
   def questions_answers
-    puts "\e[H\e[2J"
     puts @controller.get_a_question
     input = gets.chomp
     if @controller.respond_to_q_a(input)
