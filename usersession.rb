@@ -17,8 +17,9 @@ class UserSessionModel
 
   end
 
-  def validate
+  def validate(input, current_card)
     #this returns a boolean
+    current_card.answer == input
 
   end
 

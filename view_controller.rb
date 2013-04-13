@@ -14,13 +14,15 @@ class FlashCardController
   end
 
   def respond_to_q_a(input)
+    @user_session_model.validate(input, @current_card)
     # calls validate(input)
     # traps user within here if the user keeps getting this wrong
     # return success or failure message
   end
 
   def get_a_question 
-    @user_session_model.flashcard_database[0].question
+    @current_card = @user_session_model.flashcard_database[0] # hack
+    @current_card.question
   end
 
   def looping
@@ -65,7 +67,6 @@ class FlashCardView
     puts @controller.get_a_question
     input = gets.chomp
     puts @controller.respond_to_q_a(input)
-    
   end
 end
 
